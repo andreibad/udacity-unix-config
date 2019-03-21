@@ -7,8 +7,8 @@
  summary of software installed:
  updated ubuntu to latest packages
  apache2
- libapache2-mod-wsgi-py
- postgresql
+libapache2-mod-wsgi-py3
+postgresql
  pip
  flask
  sqlalchemy
