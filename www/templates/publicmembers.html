@@ -1,0 +1,60 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	
+<div style="width: 100%;">
+		<div style="float:left; width: 50%">
+<h3>Star Trek Species:</h3>
+	{% for s in specieslist %}
+	<a href = "{{url_for('showMembers', species = s.name)}}">
+			<div class="row">
+				<div class="col-md-1"></div>
+					<div class="col-md-10 species-list">
+						<h3>{{s.name}}</h3>
+					</div>
+				<div class="col-md-1"></div>
+			</div>
+		</a>
+	{% endfor %}
+
+	</div>
+	<div style="float:right;width: 50%">
+	<h3> Members of {{ species.name }} Species:</h3>
+
+	{% for m in members %}
+
+		{% for s in specieslist %}
+			{% if s.id == m.category_id %}
+				<a href = "{{url_for('showMember', species = s.name, member=m.name)}}">
+						<div class="row">
+							<div class="col-md-1"></div>
+								<div class="col-md-10 species-list">
+									<h3>{{m.name}}</h3>
+								</div>
+							<div class="col-md-1"></div>
+						</div>
+				</a>	
+			{% endif %}
+		{% endfor %}
+	{% endfor %}	
+
+   </div>
+</div>
+<div style="clear:both"></div>	
+
+{% endblock %}

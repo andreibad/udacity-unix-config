@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	
+<h3>New Member</h3>
+
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="50" class="form-control" name="name"placeholder="Name of the character">
+
+					<label for="description">Description:</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description of the character"></textarea>
+<P></P>
+					<label for="price">Species:</label>
+					{% for s in species %}
+							<div class="radio">
+
+								<label>
+									<input type="radio" name="species" id="{{s.name}}" value="{{s.name}}">{{s.name}}
+								</label>
+
+
+							</div>
+					{% endfor %}
+
+
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span  aria-hidden="true"></span>Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+

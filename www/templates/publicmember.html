@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	
+<h3> Member</h3>
+
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label> {{member.name}}
+					<P></P>
+					<label for="description">Description:</label>{{member.description}}
+<P></P>
+					<label for="price">Species:</label>
+					{% for s in species %}
+
+								{% if s.id == member.category_id %}
+								<label>
+									{{s.name}} 
+								</label>
+								{% endif %}
+
+					{% endfor %}
+
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+

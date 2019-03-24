@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	
+<h3> Member</h3>
+
+
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name"><h3>Name:</h3> </label> {{member.name}}<br>
+					<label for="description"><h3>Description:</h3> </label>{{member.description}}<br>
+					<label for="species"><h3>Species:</h3></label>
+					{% for s in species %}
+
+								{% if s.id == member.category_id %}
+								<label>
+									{{s.name}} 
+								</label>
+								{% endif %}
+
+					{% endfor %}
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	<div class="row padding-top padding-bottom">
+			<div class="col-md-1"></div>
+				<a href="{{url_for('editMember', member = member.name )}}">
+					<button class="btn btn-default" >
+						<span  aria-hidden="true"></span>Edit Member
+					</button>
+				</a>
+		
+				<a href="{{url_for('deleteMember', member= member.name )}}">
+					<button class="btn btn-default delete" >
+						<span aria-hidden="true"></span>Delete Member
+					</button>
+				</a>
+			</div>
+		</div>
+
+{% endblock %}
+
